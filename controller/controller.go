@@ -128,6 +128,17 @@ func getAllMovies() []primitive.M {
 	return movies
 }
 
+// Actual controller - file
+
+func GetAllMovies(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/x-www-form-urlencoded")
+	w.Header().Set("Allow-Control-All-Methods", "GET")
+
+	allMovies := getAllMovies()
+
+	json.NewEncoder(w).Encode(allMovies)
+}
+
 func CreateMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/x-www-form-urlencoded")
 	w.Header().Set("Allow-Control-All-Methods", "POST")
